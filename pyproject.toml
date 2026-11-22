@@ -1,11 +1,10 @@
 [project]
-name = "Aperion_Music"
-version = "1.0.0"
+name = "Aperion-Music"
+version = "2.7.3"
 description = "Sacred Instrumentals Audio Player"
 requires-python = ">=3.10"
 dependencies = [
     "flet",
-    "flet-cli",
     "flet-audio",
 ]
 
