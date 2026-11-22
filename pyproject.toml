@@ -1,0 +1,18 @@
+[project]
+name = "Music"
+version = "1.0.0"
+description = "Sacred Instrumentals Audio Player"
+requires-python = ">=3.10"
+dependencies = [
+    "flet",
+    "flet-audio",
+]
+
+[tool.flet]
+org = "com.aperion-search"
+product = "Sacred Instrumentals"
+
+[tool.flet.android.permission]
+"android.permission.INTERNET" = true
+"android.permission.READ_EXTERNAL_STORAGE" = true
+"android.permission.WRITE_EXTERNAL_STORAGE" = true
