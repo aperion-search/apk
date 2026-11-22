@@ -12,14 +12,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Check repo files and clear uv cache
-        run: |
-          ls -la
-          rm -rf .venv build
-          uv cache clean || true
-
       - name: Set up uv
         uses: astral-sh/setup-uv@v5
+
+      - name: Debug Flet CLI in fresh venv
+        run: |
+          rm -rf .venv
+          uv venv --python 3.12 .venv
+          uv pip install --python .venv/bin/python -e .
+          .venv/bin/flet --version || true
+          .venv/bin/flet --version --json || true
+          rm -rf .venv
 
       - name: Accept Android SDK licenses
         run: |
