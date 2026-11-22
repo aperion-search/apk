@@ -1,5 +1,5 @@
 [project]
-name = "Aperion-Music"
+name = "aperion-music"
 version = "2.7.3"
 description = "Sacred Instrumentals Audio Player"
 requires-python = ">=3.10"
@@ -9,7 +9,7 @@ dependencies = [
 ]
 
 [tool.flet]
-org = "com.aperion_search.music"
+org = "com.aperion_search"
 product = "Sacred Instrumentals"
 
 [tool.flet.android.permission]
