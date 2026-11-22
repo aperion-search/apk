@@ -12,6 +12,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
+      - name: Install uv and inspect Flet CLI
+        uses: astral-sh/setup-uv@v5
+      - run: |
+          uv pip install --system --break-system-packages flet flet-cli flet-audio
+          flet --version --json
+
       - name: Build Android APK
         id: build
         uses: flet-dev/flet-build-action@v1
