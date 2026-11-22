@@ -12,14 +12,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Set up uv and inspect Flet CLI
+      - name: Set up uv
         uses: astral-sh/setup-uv@v5
-      - run: |
-          uv venv .venv-check
-          source .venv-check/bin/activate
-          uv pip install flet flet-cli flet-audio
-          flet --version || true
-          flet --version --json || true
+
+      - name: Accept Android SDK licenses
+        run: |
+          if [ -n "$ANDROID_HOME" ] && [ -x "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" ]; then
+            yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses || true
+          fi
+          if command -v flutter >/dev/null 2>&1; then
+            yes | flutter doctor --android-licenses || true
+          fi
 
       - name: Build Android APK
         id: build
